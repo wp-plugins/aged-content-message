@@ -83,7 +83,7 @@ add_action( 'aged_content_message__the_content_condition',
 
 = Crap, why doesn’t this plugin provide a real settings page? =
 
-Honestly, I really felt it doesn’t need one, but it might get one in the future—**if** you give it a [review with a 5 star rating](//:wordpress.org/support/view/plugin-reviews/aged-content-message) and include a gentle reminder that a settings page would make you really happy. :)
+Honestly, I really felt it doesn’t need one, but it might get one in the future—**if** you give it a [review with a 5 star rating](//wordpress.org/support/view/plugin-reviews/aged-content-message) and include a gentle reminder that a settings page would make you really happy. :)
 
 == Screenshots ==
 
