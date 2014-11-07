@@ -8,7 +8,7 @@
  * Author URI:  http://glueckpress.com/
  * Plugin URI:  //wordpress.org/plugins/aged-content-message
  * License:     GPLv2 or later
- * Version:     1.1.1
+ * Version:     1.2
  *
  * PHP Version: 5.2
  */
@@ -75,7 +75,14 @@ function aged_content_message__the_content( $content ) {
 		return $content;
 	}
 
-	$age = apply_filters( 'aged_content_message__the_content_age', date( 'Y' ) - get_the_time( 'Y' ) );
+	// Calculate the age in years as a float
+	$years_diff = ( time() - get_the_time( 'U' ) ) / ( 60 * 60 * 24 * 365 );
+	$age = apply_filters( 'aged_content_message__the_content_age', floor( $years_diff ) );
+
+	// Return original content if not too old
+	if ( $years_diff < apply_filters( 'aged_content_message__the_content_min_age', 1 ) ) {
+		return $content;
+	}
 
 	// Singular/plural form message.
 	$msg = apply_filters(
@@ -93,9 +100,5 @@ function aged_content_message__the_content( $content ) {
 		)
 	);
 
-	if ( $age >= apply_filters( 'aged_content_message__the_content_min_age', 1 ) ) {
-		$content = $msg . $content;
-	}
-
-	return $content;
+	return $msg . $content;
 }
